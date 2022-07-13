@@ -2,7 +2,7 @@ use reqwest::Client;
 
 use crate::{
     constants::{Response, API_ROOT},
-    sign_in::User,
+    structs::User,
 };
 
 #[derive(Debug)]
