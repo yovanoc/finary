@@ -31,7 +31,10 @@ jobs:
       - name: Test
         run: |
           cargo check
-          cargo test --all          
+          cargo test --all     
+        env:
+          FINARY_EMAIL: ${{ secrets.FINARY_EMAIL }}
+          FINARY_PASSWORD: ${{ secrets.FINARY_PASSWORD }}
 
       - name: Build
         run: |
