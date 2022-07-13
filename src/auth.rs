@@ -55,22 +55,17 @@ mod tests {
 
     #[tokio::test]
     async fn it_works() {
+        let email = std::env::var("FINARY_EMAIL").expect("FINARY_EMAIL env var is not set");
+        let password = std::env::var("FINARY_PASSWORD").expect("FINARY_PASSWORD env var is not set");
+        let finary = sign_in(&email, &password).await;
+        assert!(finary.is_ok(), "finary is not ready");
+    }
+
+    #[tokio::test]
+    async fn it_does_not_works() {
         let email = "";
         let password = "";
         let finary = sign_in(email, password).await;
-
-        // println!("{:#?}", finary);
-
-        match finary {
-            Ok(finary) => {
-                let me = finary.me().await;
-                println!("{:#?}", me);
-            }
-            Err(e) => {
-                println!("{:#?}", e);
-            }
-        }
-
-        assert_eq!(3, 4)
+        assert!(finary.is_err(), "finary is not None");
     }
 }
