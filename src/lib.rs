@@ -1,5 +1,5 @@
+pub mod auth;
 mod constants;
-pub mod finary;
-pub mod sign_in;
 pub mod error;
+pub mod finary;
 pub mod structs;
